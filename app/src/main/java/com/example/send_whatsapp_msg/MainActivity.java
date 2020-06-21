@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 boolean installed = appInstalledOrNot("com.whatsapp");
                 if(installed) {
 
-                    Toast.makeText(MainActivity.this, "Whats App is not installed in your device", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Whats App is not installed in your device", Toast.LENGTH_LONG).show();
+
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp"));
                     startActivity(intent);
