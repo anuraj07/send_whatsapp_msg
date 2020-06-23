@@ -38,13 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean installed = appInstalledOrNot("com.whatsapp");
                 if(installed) {
 
-                    Toast.makeText(MainActivity.this, "Whats App is not installed in your device", Toast.LENGTH_LONG).show();
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp"));
-                    startActivity(intent);
-
-                    /*if (number.trim().isEmpty()) {
+                    if (number.trim().isEmpty()) {
                         mobileNumber.setError("This field can't be empty");
                         mobileNumber.requestFocus();
                     } else if (code.trim().isEmpty()){
@@ -57,13 +51,22 @@ public class MainActivity extends AppCompatActivity {
                         i.setData(Uri.parse(url));
                         startActivity(i);
 
-                    }*/
+                    }
 
                 } else {
 
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp"));
-                    startActivity(intent);
+                    Toast.makeText(MainActivity.this, "Whats App is not installed in your device", Toast.LENGTH_LONG).show();
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp"));
+                            startActivity(intent);
+
+                            finish();
+                        }
+                    },3000);
 
                 }
 
