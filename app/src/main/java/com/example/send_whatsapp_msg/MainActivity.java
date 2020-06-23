@@ -10,12 +10,14 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText mobileNumber, message, countryCode;
     private Button send;
+    private ImageView setting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
         message = findViewById(R.id.message);
         send = findViewById(R.id.send_btn);
         countryCode = findViewById(R.id.country_code);
+        setting = findViewById(R.id.setting);
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            }
+        });
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
