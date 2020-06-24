@@ -13,11 +13,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.hbb20.CountryCodePicker;
+
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mobileNumber, message, countryCode;
+    private EditText mobileNumber, message;
     private Button send;
     private ImageView setting;
+    private CountryCodePicker countryCodePicker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +29,13 @@ public class MainActivity extends AppCompatActivity {
         mobileNumber = findViewById(R.id.mobile_no);
         message = findViewById(R.id.message);
         send = findViewById(R.id.send_btn);
-        countryCode = findViewById(R.id.country_code);
+//        countryCode = findViewById(R.id.country_code);
         setting = findViewById(R.id.setting);
+        countryCodePicker = findViewById(R.id.select_country_code);
+
+
+
+
 
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String number = mobileNumber.getText().toString();
                 String msg = message.getText().toString();
-                String code = countryCode.getText().toString();
+//                String code = countryCode.getText().toString();
+                String fullPhoneNumber = countryCodePicker.getFullNumber() + number;
 
 
                 boolean installed = appInstalledOrNot("com.whatsapp");
@@ -51,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
                     if (number.trim().isEmpty()) {
                         mobileNumber.setError("This field can't be empty");
                         mobileNumber.requestFocus();
-                    } else if (code.trim().isEmpty()){
+                    } /*else if (code.trim().isEmpty()){
                         countryCode.setError("This field can't be empty");
                         countryCode.requestFocus();
-                    }else {
+                    }*/else {
 
-                        String url = "https://api.whatsapp.com/send?phone="+code+number.trim()+"&text="+msg;
+                        String url = "https://api.whatsapp.com/send?phone="+fullPhoneNumber+"&text="+msg;
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(url));
                         startActivity(i);
@@ -99,4 +108,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return app_installed;
     }
+
 }

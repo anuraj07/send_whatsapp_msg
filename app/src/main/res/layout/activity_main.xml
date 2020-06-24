@@ -60,9 +60,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/country_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +71,23 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="5dp"
-                android:text="+91"/>
+                android:text="+91"/>-->
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/select_country_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:ccp_textSize="16dp"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_showNameCode="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="5dp"/>
+
+
             <EditText
                 android:id="@+id/mobile_no"
                 android:layout_width="match_parent"
@@ -80,6 +97,7 @@
                 android:layout_marginEnd="20dp"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textSize="16dp"
                 android:hint="Enter mobile no." />
 
         </LinearLayout>
@@ -99,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:background="@drawable/git_button_bg"
             android:text="SEND" />
 
 
