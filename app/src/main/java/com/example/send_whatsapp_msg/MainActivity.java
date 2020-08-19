@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.hbb20.CountryCodePicker;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private Button send;
     private ImageView setting;
     private CountryCodePicker countryCodePicker;
+    private AdView adView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
 //        countryCode = findViewById(R.id.country_code);
         setting = findViewById(R.id.setting);
         countryCodePicker = findViewById(R.id.select_country_code);
+        adView = findViewById(R.id.adView);
 
+
+        MobileAds.initialize(this,"ca-app-pub-1717124682197622~3794930388");
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
 
 

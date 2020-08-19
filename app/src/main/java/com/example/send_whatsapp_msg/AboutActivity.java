@@ -13,10 +13,15 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class AboutActivity extends AppCompatActivity {
 
     private Button github;
     private Switch darkMode;
+    private AdView adView;
 
 
     public static final String MyPREFERENCES = "nightModePrefs";
@@ -31,6 +36,13 @@ public class AboutActivity extends AppCompatActivity {
 
         github = (Button) findViewById(R.id.github);
         darkMode = (Switch) findViewById(R.id.dark_mode);
+        adView = findViewById(R.id.adView);
+
+
+
+        MobileAds.initialize(this,"ca-app-pub-1717124682197622~3794930388");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
